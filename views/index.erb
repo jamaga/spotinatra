@@ -1,0 +1,19 @@
+<h1>Add new song</h1>
+
+<form action='/' method="POST">
+  Song title: <input type="text" name="song" style="margin: 10px" /><br />
+  Artist: <input type="text" name="artist" style="margin: 10px"/><br />
+
+  <input type="submit" value="Submit" />
+</form>
+
+<h1>Songs</h1>
+<ul>
+	<% @@song_list.each do |song| %>
+		<li>
+			<%= "song: " + song[0].to_s + " artist: " + song[1].to_s %>
+		</li>
+	<%end%>
+</ul>
+
+<a href="/search"> search for song </a>

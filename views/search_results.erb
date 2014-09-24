@@ -1,0 +1,16 @@
+<h1> search result page </h1>
+
+<ul>
+	<% if @results.size > 0 %>
+		<% @results.each do |song| %>
+			<li>
+				<%= "song: " + song[0].to_s + " artist: " + song[1].to_s %>
+			</li>
+		<%end%>
+	<% else %>
+		<%= "sorry, there were no songs that match your term" %>
+	<% end %>
+</ul>
+
+<a href="/search"> search again </a><br /> 
+<a href="/"> go home </a>
