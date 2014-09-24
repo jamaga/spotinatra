@@ -1,5 +1,7 @@
+require_relative 'song_list.rb'
 require 'sinatra'
-@@song_list = [["stairway to heaven", "led zeppelin"], ["waka waka", "shakira"], ["yellow submarine", "beatles"], ["happy", "pharell"], ["loca", "shakira"], ["smells like teen spirit", "nirvana"]]
+@@list_object = SongList.new
+@@song_list = @@list_object.song_list
 
 get '/' do 
 	erb :index
@@ -12,11 +14,11 @@ get "/search" do
 end
 
 get '/enough' do
-	"YOUR MUSIC IS WORTH F**ING NOTHING"
+	erb :enough
 end
 
 post '/' do
-	@@song_list << [params[:song], params[:artist]]
+	@@list_object.add_song(params[:song], params[:artist])
 	if @@song_list.size >= 10
 		redirect "/enough"
 	else
@@ -34,6 +36,9 @@ post '/search' do
 	end
 	erb :search_results
 end
+
+
+
 
 
 # get '/songs/:name/:artist' do
